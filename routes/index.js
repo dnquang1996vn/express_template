@@ -1,9 +1,10 @@
-const express = require('express');
-const router = express.Router();
+const salesViewRouter = require('./sales-view');
+const salesPdfRouter = require('./sales-pdf');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+function configRoute(app) {
+  app.use('/sales', salesViewRouter);
+  app.use('/sales/pdf', salesPdfRouter);
+  return app;
+}
 
-module.exports = router;
+module.exports = configRoute;
